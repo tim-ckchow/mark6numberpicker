@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark 6 Random Generation</title>
+</head>
+<body>
+    <h1>Mark 6 Random Number Generator</h1>
+    <button id="startButton" onclick="generateNumbers()">Start</button>
+    
+    <div id="resultContainer"></div>
+
+    <script>
+        // API function to generate 17 sets of 6 random numbers
+        function generateMark6Numbers() {
+            const results = [];
+            
+            for (let i = 0; i < 17; i++) {
+                const numbers = [];
+                const used = new Set();
+                
+                // Generate 6 unique random numbers between 1 and 49
+                while (numbers.length < 6) {
+                    const num = Math.floor(Math.random() * 49) + 1;
+                    if (!used.has(num)) {
+                        used.add(num);
+                        numbers.push(num);
+                    }
+                }
+                
+                // Sort the numbers
+                numbers.sort((a, b) => a - b);
+                results.push(numbers);
+            }
+            
+            return results;
+        }
+
+        // Function to display results in a table
+        function displayResults(data) {
+            const container = document.getElementById('resultContainer');
+            
+            let tableHTML = '<table border="1">';
+            tableHTML += '<thead><tr><th>Set</th><th>Number 1</th><th>Number 2</th><th>Number 3</th><th>Number 4</th><th>Number 5</th><th>Number 6</th></tr></thead>';
+            tableHTML += '<tbody>';
+            
+            data.forEach((set, index) => {
+                tableHTML += '<tr>';
+                tableHTML += `<td>${index + 1}</td>`;
+                set.forEach(num => {
+                    tableHTML += `<td>${num}</td>`;
+                });
+                tableHTML += '</tr>';
+            });
+            
+            tableHTML += '</tbody></table>';
+            container.innerHTML = tableHTML;
+        }
+
+        // Main function called when Start button is clicked
+        function generateNumbers() {
+            const results = generateMark6Numbers();
+            displayResults(results);
+        }
+    </script>
+</body>
+</html>
