@@ -23,7 +23,7 @@ function App() {
       shuffleNumbers(tmpList);
       const randomIndex = Math.floor(Math.random() * tmpList.length);
     const currLuckynumber =  tmpList[randomIndex]; 
-    setLuckyNumbers(luckynumber);
+    setLuckyNumbers(currLuckynumber);
       tmpList.splice(randomIndex, 1);
       const tmpListOfListOfNumbers: number[][] = [];
       for (let i = 0; i < 6; i++) {
@@ -36,7 +36,7 @@ function App() {
         listOfNumbers.sort((a, b) => a - b);
         tmpListOfListOfNumbers.push(listOfNumbers);
       }
-      tmpList = poolNumbers.filter(num => num !== luckyNumbers);
+      tmpList = poolNumbers.filter(num => num !== currLuckynumber);
       //7th list use lucky number and random
       shuffleNumbers(tmpList);
       const seventhList: number[] = [currLuckynumber];
