@@ -22,7 +22,8 @@ function App() {
       let tmpList: number[] = [...poolNumbers];
       shuffleNumbers(tmpList);
       const randomIndex = Math.floor(Math.random() * tmpList.length);
-      setLuckyNumbers(tmpList[randomIndex]);
+    const luckynumber =  tmpList[randomIndex]; 
+    setLuckyNumbers(luckynumber);
       tmpList.splice(randomIndex, 1);
       const tmpListOfListOfNumbers: number[][] = [];
       for (let i = 0; i < 6; i++) {
@@ -54,7 +55,7 @@ function App() {
       <div className="App">
         <h1>Mark 6 Number Generator</h1>
         <button onClick={generateNumbers}>Generate Lucky Number</button>
-        {/* print listOflistofNumbers */}
+    
         {listOflistofNumbers.length > 0 && (
           <div>
             <h2>Lucky Number: {luckyNumbers}</h2>
